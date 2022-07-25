@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 // npm i ioredis@^4.0.0
 const Redis = require('ioredis'); // eslint-disable-line import/no-unresolved
 const isEmpty = require('lodash/isEmpty');
@@ -39,7 +40,8 @@ class RedisAdapter {
   async upsert(id, payload, expiresIn) {
     const key = this.key(id);
     const store = consumable.has(this.name)
-      ? { payload: JSON.stringify(payload) } : JSON.stringify(payload);
+      ? { payload: JSON.stringify(payload) }
+      : JSON.stringify(payload);
 
     const multi = client.multi();
     multi[consumable.has(this.name) ? 'hmset' : 'set'](key, store);
@@ -108,7 +110,7 @@ class RedisAdapter {
     await client.del(key);
   }
 
-  async revokeByGrantId(grantId) { // eslint-disable-line class-methods-use-this
+  async revokeByGrantId(grantId) {
     const multi = client.multi();
     const tokens = await client.lrange(grantKeyFor(grantId), 0, -1);
     tokens.forEach((token) => multi.del(token));
