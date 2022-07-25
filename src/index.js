@@ -3,6 +3,7 @@
 const assert = require('assert');
 const path = require('path');
 const express = require('express');
+const crypto = require('crypto');
 const bodyParser = require('body-parser');
 const Provider = require('oidc-provider');
 
@@ -28,6 +29,20 @@ const jwks = require('./jwks.json');
 // simple account model for this application, user list is defined like so
 const Account = require('./account');
 
+function base64URLEncode(str) {
+  return str
+    .toString('base64')
+    .replace(/\+/g, '-')
+    .replace(/\//g, '_')
+    .replace(/=/g, '');
+}
+
+function sha256(buffer) {
+  return crypto.createHash('sha256').update(buffer).digest();
+}
+
+const verifier = base64URLEncode(crypto.randomBytes(32));
+
 const oidc = new Provider(
   `https://${process.env.HEROKU_APP_NAME}.herokuapp.com`,
   {
@@ -42,8 +57,8 @@ const oidc = new Provider(
           'https://bartlettgroup.sandbox.myabsorb.com/api/rest/v2/authentication/openIdConnect',
         ], // using jwt.io as redirect_uri to show the ID Token contents
         response_types: ['code'],
-        code_challenge: 'sjkdasdjkhdajdaudioasudiajdkasfjkasfjaskdjaskldas',
-        code_verifier: 'sdsdasdasdasdasdasdasd',
+        code_challenge: base64URLEncode(sha256(verifier)),
+        code_verifier: verifier,
         grant_types: ['authorization_code'],
         token_endpoint_auth_method: 'client_secret_basic',
       },
