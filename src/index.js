@@ -29,20 +29,6 @@ const jwks = require('./jwks.json');
 // simple account model for this application, user list is defined like so
 const Account = require('./account');
 
-function base64URLEncode(str) {
-  return str
-    .toString('base64')
-    .replace(/\+/g, '-')
-    .replace(/\//g, '_')
-    .replace(/=/g, '');
-}
-
-function sha256(buffer) {
-  return crypto.createHash('sha256').update(buffer).digest();
-}
-
-const verifier = base64URLEncode(crypto.randomBytes(32));
-
 const oidc = new Provider(
   `https://${process.env.HEROKU_APP_NAME}.herokuapp.com`,
   {
@@ -92,8 +78,8 @@ const oidc = new Provider(
       devInteractions: { enabled: false },
     },
     pkce: {
-      methods: ['S256', 'plain'],
-      required: false,
+      methods: ['S256'],
+      required: true,
     },
   }
 );
