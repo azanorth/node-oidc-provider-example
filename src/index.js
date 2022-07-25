@@ -95,7 +95,7 @@ const oidc = new Provider(
     },
     pkce: {
       methods: ['S256'],
-      required: true,
+      required: false,
     },
   }
 );
