@@ -57,8 +57,6 @@ const oidc = new Provider(
           'https://bartlettgroup.sandbox.myabsorb.com/api/rest/v2/authentication/openIdConnect',
         ], // using jwt.io as redirect_uri to show the ID Token contents
         response_types: ['code'],
-        // code_challenge: base64URLEncode(sha256(verifier)),
-        // code_verifier: verifier,
         grant_types: ['authorization_code'],
         token_endpoint_auth_method: 'client_secret_basic',
       },
@@ -94,8 +92,10 @@ const oidc = new Provider(
       devInteractions: { enabled: false },
     },
     pkce: {
-      methods: ['S256'],
-      required: false,
+      methods: ['S256', 'plain'],
+      required(ctx, client) {
+        return true;
+      },
     },
   }
 );
