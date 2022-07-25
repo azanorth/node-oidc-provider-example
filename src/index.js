@@ -43,7 +43,7 @@ const oidc = new Provider(
         ], // using jwt.io as redirect_uri to show the ID Token contents
         response_types: ['code'],
         grant_types: ['authorization_code'],
-        token_endpoint_auth_method: 'client_secret_basic',
+        token_endpoint_auth_method: 'client_secret_post',
         pkce: {
           required: true,
         },
@@ -263,5 +263,4 @@ expressApp.use(oidc.callback());
 // express listen
 expressApp.listen(process.env.PORT);
 
-// https://obscure-oasis-20527.herokuapp.com
-// /auth?client_id=foo&response_type=code&redirect_uri=https%3A%2F%2Fjwt.io&scope=openid%20email&nonce=foobar&prompt=login
+// https://obscure-oasis-20527.herokuapp.com/auth?client_id=foo&response_type=code&redirect_uri=https%3A%2F%2Fjwt.io&scope=openid%20email&nonce=foobar&prompt=login
