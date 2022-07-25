@@ -60,7 +60,11 @@ const oidc = new Provider(
         code_challenge: base64URLEncode(sha256(verifier)),
         code_verifier: verifier,
         grant_types: ['authorization_code'],
-        token_endpoint_auth_method: 'client_secret_basic',
+        pkce: {
+          required: true,
+        },
+        token_endpoint_auth_method: 'none',
+        // token_endpoint_auth_method: 'client_secret_basic',
       },
     ],
     cookies: {
