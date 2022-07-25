@@ -93,7 +93,7 @@ const oidc = new Provider(
     },
     pkce: {
       methods: ['S256', 'plain'],
-      required: true,
+      required: false,
     },
   }
 );
@@ -279,4 +279,4 @@ expressApp.use(oidc.callback());
 // express listen
 expressApp.listen(process.env.PORT);
 
-// https://obscure-oasis-20527.herokuapp.com/auth?client_id=foo&response_type=code&redirect_uri=https%3A%2F%2Fjwt.io&scope=openid%20email&nonce=foobar&&state=af0ifjsldkj&code_challenge=CODE_CHALLENGEfdfdsfsdfdsfdsfdsdfdsfdsfsdfsfds&code_challenge_method=S256
+// https://obscure-oasis-20527.herokuapp.com/auth?client_id=foo&response_type=code&redirect_uri=https%3A%2F%2Fjwt.io&scope=openid%20email&nonce=foobar&state=af0ifjsldkj&code_challenge=CODE_CHALLENGEfdfdsfsdfdsfdsfdsdfdsfdsfsdfsfds&code_challenge_method=S256
