@@ -44,6 +44,9 @@ const oidc = new Provider(
         response_types: ['code'],
         grant_types: ['authorization_code'],
         token_endpoint_auth_method: 'client_secret_basic',
+        pkce: {
+          required: true,
+        },
       },
     ],
     cookies: {
@@ -259,3 +262,6 @@ expressApp.use(oidc.callback());
 
 // express listen
 expressApp.listen(process.env.PORT);
+
+// https://obscure-oasis-20527.herokuapp.com
+// /auth?client_id=foo&response_type=code&redirect_uri=https%3A%2F%2Fjwt.io&scope=openid%20email&nonce=foobar&prompt=login
