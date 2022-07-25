@@ -35,6 +35,7 @@ const oidc = new Provider(
     clients: [
       {
         client_id: 'foo',
+        client_secret: 'bar',
         redirect_uris: [
           'https://jwt.io',
           'https://bartlettgroup00.sandbox.myabsorb.com',
