@@ -60,11 +60,7 @@ const oidc = new Provider(
         code_challenge: base64URLEncode(sha256(verifier)),
         code_verifier: verifier,
         grant_types: ['authorization_code'],
-        pkce: {
-          required: true,
-        },
-        token_endpoint_auth_method: 'none',
-        // token_endpoint_auth_method: 'client_secret_basic',
+        token_endpoint_auth_method: 'client_secret_basic',
       },
     ],
     cookies: {
@@ -96,6 +92,10 @@ const oidc = new Provider(
     features: {
       // disable the packaged interactions
       devInteractions: { enabled: false },
+    },
+    pkce: {
+      methods: ['S256'],
+      required: true,
     },
   }
 );
