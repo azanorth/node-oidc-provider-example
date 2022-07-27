@@ -76,10 +76,6 @@ const oidc = new Provider(
       // disable the packaged interactions
       devInteractions: { enabled: false },
     },
-    pkce: {
-      methods: ['S256'],
-      required: false,
-    },
   }
 );
 
