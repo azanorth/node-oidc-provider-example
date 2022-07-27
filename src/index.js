@@ -3,7 +3,6 @@
 const assert = require('assert');
 const path = require('path');
 const express = require('express');
-const crypto = require('crypto');
 const bodyParser = require('body-parser');
 const Provider = require('oidc-provider');
 
