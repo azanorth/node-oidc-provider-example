@@ -4,7 +4,7 @@ const assert = require('assert');
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
-const Provider = require('oidc-provider');
+const Provider = require('./provider');
 
 assert(process.env.HEROKU_APP_NAME, 'process.env.HEROKU_APP_NAME missing');
 assert(process.env.PORT, 'process.env.PORT missing');
