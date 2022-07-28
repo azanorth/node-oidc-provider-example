@@ -11,8 +11,6 @@ module.exports = function checkPKCE(ctx, next) {
   const { params, route } = ctx.oidc;
   const { pkce } = instance(ctx.oidc.provider).configuration();
 
-  console.log(pkce);
-
   // if (!params.code_challenge_method && params.code_challenge) {
   //   if (pkce.methods.includes('plain')) {
   //     params.code_challenge_method = 'plain';

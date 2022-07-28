@@ -8,7 +8,7 @@ const assert = require('assert');
 db.defaults({
   users: [
     {
-      id: '23121d3c-84df-44ac-b458-3d63a9a05497',
+      id: 'foo@example.com',
       email: 'foo@example.com',
       email_verified: true,
     },
