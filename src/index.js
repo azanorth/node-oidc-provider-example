@@ -84,10 +84,11 @@ oidc.proxy = true;
 
 // let's work with express here, below is just the interaction definition
 const expressApp = express();
+
+expressApp.use(express.static(`${__dirname}/public`));
 expressApp.set('trust proxy', true);
 expressApp.set('view engine', 'ejs');
 expressApp.set('views', path.resolve(__dirname, 'views'));
-expressApp.use(express.static(`${__dirname}/public`));
 
 const parse = bodyParser.urlencoded({ extended: false });
 
