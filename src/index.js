@@ -85,11 +85,8 @@ oidc.proxy = true;
 // let's work with express here, below is just the interaction definition
 const expressApp = express();
 
-var public = path.join(__dirname, 'public');
-
-app.use('/', express.static(public));
-
 // expressApp.use('/interaction/*', express.static(`${__dirname}/public`));
+app.use(express.static(path.join(__dirname, 'public')));
 expressApp.set('trust proxy', true);
 expressApp.set('view engine', 'ejs');
 expressApp.set('views', path.resolve(__dirname, 'views'));
