@@ -86,7 +86,7 @@ oidc.proxy = true;
 const expressApp = express();
 
 // expressApp.use('/interaction/*', express.static(`${__dirname}/public`));
-app.use(express.static(path.join(__dirname, 'public')));
+expressApp.use(express.static(path.join(__dirname, 'public')));
 expressApp.set('trust proxy', true);
 expressApp.set('view engine', 'ejs');
 expressApp.set('views', path.resolve(__dirname, 'views'));
