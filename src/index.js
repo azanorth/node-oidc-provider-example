@@ -86,6 +86,9 @@ const expressApp = express();
 expressApp.set('trust proxy', true);
 expressApp.set('view engine', 'ejs');
 expressApp.set('views', path.resolve(__dirname, 'views'));
+expressApp.set('js', path.resolve(__dirname, 'js'));
+expressApp.set('img', path.resolve(__dirname, 'img'));
+expressApp.set('css', path.resolve(__dirname, 'css'));
 
 const parse = bodyParser.urlencoded({ extended: false });
 
