@@ -265,3 +265,6 @@ expressApp.listen(process.env.PORT);
 // https://obscure-oasis-20527.herokuapp.com/jwks
 
 // https://murmuring-bayou-15065.herokuapp.com
+
+// _session            551tnzJvZBBug3B8srnqr
+// _session.sig        pKmiwwpAx-oRuszwnfzeAO1beqE
