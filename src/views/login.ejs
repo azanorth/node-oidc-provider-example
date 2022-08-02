@@ -66,7 +66,9 @@
             <label class="login__form-field">
               <span class="login__form-label">Enter username</span>
               <input
-                type="text"
+                required
+                type="email"
+                name="email"
                 class="login__form-input login__form-input_mail"
                 onkeydown="validateEmailInput()"
               />
@@ -76,15 +78,15 @@
             <label class="login__form-field">
               <span class="login__form-label">Enter password</span>
               <input
-                type="text"
+                required
+                type="password"
+                name="password"
                 class="login__form-input login__form-input_password"
               />
             </label>
 
-            <input type="submit" id="submit-form" style="display: none" />
-
             <div class="login__form-btn-group">
-              <button type="button" id="submit" class="login__form-btn">
+              <button type="submit" id="submit" class="login__form-btn">
                 Sign-in
               </button>
 

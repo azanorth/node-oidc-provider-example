@@ -36,8 +36,6 @@ document.getElementById('submit').addEventListener('click', (event) => {
   if (!makeEmailValidate()) {
     EMAIL_TOUCHED = true;
     event.preventDefault();
-  } else {
-    document.getElementById('submit-form').click();
   }
 });
 
